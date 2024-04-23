@@ -1,9 +1,9 @@
 let walkers = []
-let balls = []
+let stars = []
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
-  background(0);
+  background(0, 0, 30);
 
   for(s = 0; s < 100; s ++){
     let x = random(0, width);
@@ -14,11 +14,11 @@ function setup() {
     walkers[s] = new Walker(x, y, r, g, b);
   }
 
-  for(c = 0; c < 30; c ++){ //number is amount of the object//
+  for(c = 0; c < 100; c ++){ //number is amount of the object//
     let rx = random(15, width - 15);
     let ry = random(15, height - 15);
     let rr = random(10, 50)
-    balls[c] = new Ball(rx, ry, rr);
+    stars[c] = new Star(rx, ry, rr);
   }  
 }
 
@@ -37,18 +37,18 @@ class Walker{
 		this.y += random(-2, 2);
 	}
 
-	show(){
+	path(){
 		strokeWeight(2);
 		stroke(this.r, this.g, this.b);
 		point(this.x, this.y);
 	}
 }
 
-class Ball {
+class Star {
 	constructor(x, y, r){ //where you can define the variables to use in the functions, this one defines the starting x and y positions//
 		this.x = x;
 		this.y = y;
-		this.r = r
+		this.r = r;
 	} //you can just leave these as x and y, no number values and then add in the values under setup between the () when you write 'new Ball' if you want them to be different//
 	
 	move(){
@@ -57,9 +57,9 @@ class Ball {
 	}
 
 	show(){
-		fill(255, 0, 255);
+		fill(150, 150, 0);
 		noStroke();
-		ellipse(that.x, that.y, 30, 30);
+		ellipse(this.x, this.y, random(0, 30), random(0,30));
 	}
 
 	edges(){ //prevent object from going off the canvas completely, number determined by half size of object//
@@ -77,16 +77,18 @@ class Ball {
 }
 
 function draw() {
-  for(x = 0; x < walkers.length; x++){
-    walkers[x].step();
-    walkers[x].show();
+
+  background(0, 0, 30)
+  for(x = 0; x < stars.length; x++){
+    stars[x].move();
+    stars[x].show();
+    stars[x].edges();
   }
   
-  for(x = 0; x < balls.length; x++){
-    balls[x].move();
-    balls[x].show();
-    balls[x].edges();
-  }  
+  // for(x = 0; x < walkers.length; x++){
+  //   walkers[x].step();
+  //   walkers[x].path();
+  // }
 }
 
 

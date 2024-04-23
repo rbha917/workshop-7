@@ -46,14 +46,14 @@ class Walker{
 
 class Ball {
 	constructor(x, y, r){ //where you can define the variables to use in the functions, this one defines the starting x and y positions//
-		that.x = x;
-		that.y = y;
-		that.r = r
+		this.x = x;
+		this.y = y;
+		this.r = r
 	} //you can just leave these as x and y, no number values and then add in the values under setup between the () when you write 'new Ball' if you want them to be different//
 	
 	move(){
-	ball.x = ball.x + random(-4, 4);
-	ball.y = ball.y + random(-4, 4);		
+	this.x = this.x + random(-4, 4);
+	this.y = this.y + random(-4, 4);		
 	}
 
 	show(){
@@ -63,15 +63,15 @@ class Ball {
 	}
 
 	edges(){ //prevent object from going off the canvas completely, number determined by half size of object//
-		if (that.x < 15){
-			that.x = 15;
-		} else if(that.x > width - 15){
-			that.x = width - 15;
+		if (this.x < 15){
+			this.x = 15;
+		} else if(this.x > width - 15){
+			this.x = width - 15;
 		}
-		if (that.y < 15){
-			that.y = 15;
-		} else if(that.y > height - 15){
-			that.y = height - 15;
+		if (this.y < 15){
+			this.y = 15;
+		} else if(this.y > height - 15){
+			this.y = height - 15;
 		}
 	}
 }

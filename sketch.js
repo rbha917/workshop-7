@@ -1,9 +1,10 @@
 let walkers = []
 
 function setup() {
-  createCanvas(600, 600);
+  createCanvas(windowWidth, windowHeight);
+  background(0);
 
-  for(s = 0; s < 40; s ++){
+  for(s = 0; s < 100; s ++){
     let x = random(0, width);
     let y = random(0, height);
     let r = random(0, 255);
@@ -36,8 +37,7 @@ class Walker{
 }
 
 function draw() {
-  background(0);
-  for(x = 0; x < walkers.length; X++){
+  for(x = 0; x < walkers.length; x++){
     walkers[x].step();
     walkers[x].show();
   }  
